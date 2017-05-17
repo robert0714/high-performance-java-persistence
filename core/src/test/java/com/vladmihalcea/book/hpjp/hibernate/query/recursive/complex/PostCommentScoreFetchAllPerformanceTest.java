@@ -16,7 +16,7 @@ public class PostCommentScoreFetchAllPerformanceTest extends AbstractPostComment
 
     @Override
     protected List<PostCommentScore> postCommentScores(Long postId, int rank) {
-        return doInJPA(entityManager -> {
+        return doInJPA1(entityManager -> {
             long startNanos = System.nanoTime();
             List<PostCommentVote> postCommentVotes = entityManager.createQuery(
                 "select pcv " +

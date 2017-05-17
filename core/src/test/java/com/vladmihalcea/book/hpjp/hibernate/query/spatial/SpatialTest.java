@@ -41,7 +41,7 @@ public class SpatialTest extends AbstractPostgreSQLIntegrationTest {
 
     @Test
     public void test() {
-        Long addressId = doInJPA(entityManager -> {
+        Long addressId = doInJPA1(entityManager -> {
             try {
                 Address address = new Address();
                 address.setId(1L);

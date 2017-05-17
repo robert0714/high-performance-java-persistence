@@ -26,7 +26,7 @@ public class MappedSuperclassTest extends AbstractTest {
 
     @Test
     public void test() {
-        Topic topic = doInJPA(entityManager -> {
+        Topic topic = doInJPA1(entityManager -> {
             Board board = new Board();
             board.setId(1L);
             board.setName("Hibernate");

@@ -25,7 +25,7 @@ public class CompositeIdManyToOneWithCompanyInIdTest extends AbstractTest {
     public void test() {
         LOGGER.debug("test");
 
-        Company company = doInJPA(entityManager -> {
+        Company company = doInJPA1(entityManager -> {
             Company _company = new Company();
             _company.setId(1L);
             _company.setName("vladmihalcea.com");

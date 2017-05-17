@@ -21,7 +21,7 @@ public class PostCommentScoreRecursiveCTESelectPerformanceTest extends AbstractP
 
     @Override
     protected List<PostCommentScore> postCommentScores(Long postId, int rank) {
-        return doInJPA(entityManager -> {
+        return doInJPA1(entityManager -> {
             long startNanos = System.nanoTime();
             List<PostCommentScore> postCommentScores = entityManager.createNativeQuery(
                 "SELECT id, parent_id, root_id, review, created_on, score " +

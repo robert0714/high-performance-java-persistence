@@ -31,7 +31,7 @@ public class HibernateProxyTest extends AbstractTest {
 
     @Test
     public void test() {
-        Post _post = doInJPA(entityManager -> {
+        Post _post = doInJPA1(entityManager -> {
             Post post = new Post();
             post.setId( 1L );
             post.setTitle( "High-Performance Java Persistence" );

@@ -26,7 +26,7 @@ public class BidirectionalOneToManyUniquenessTest extends AbstractTest {
 
     @Test
     public void testLifecycle() {
-        final PostComment comment = doInJPA(entityManager -> {
+        final PostComment comment = doInJPA1(entityManager -> {
             Post post = new Post("First post");
             entityManager.persist(post);
 
@@ -53,7 +53,7 @@ public class BidirectionalOneToManyUniquenessTest extends AbstractTest {
 
     @Test
     public void testShuffle() {
-        final PostComment comment = doInJPA(entityManager -> {
+        final PostComment comment = doInJPA1(entityManager -> {
             Post post = new Post("First post");
             entityManager.persist(post);
 

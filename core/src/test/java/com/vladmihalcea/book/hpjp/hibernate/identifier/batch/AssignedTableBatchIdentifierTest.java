@@ -18,7 +18,7 @@ public class AssignedTableBatchIdentifierTest extends AbstractBatchIdentifierTes
     @Test
     public void testIdentityIdentifierGenerator() {
         LOGGER.debug("testIdentityIdentifierGenerator");
-        doInJPA(entityManager -> {
+        doInJPA1(entityManager -> {
                 for (int i = 0; i < 5; i++) {
                     entityManager.persist(new Post());
                 }

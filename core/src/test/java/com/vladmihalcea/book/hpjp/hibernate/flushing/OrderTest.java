@@ -23,7 +23,7 @@ public class OrderTest extends AbstractTest {
     @Override
     public void init() {
         super.init();
-        postId = doInJPA(entityManager -> {
+        postId = doInJPA1(entityManager -> {
             Post post = new Post();
             post.setTitle("High-Performance Java Persistence");
             post.setSlug("high-performance-java-persistence");

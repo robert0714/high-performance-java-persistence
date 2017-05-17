@@ -191,7 +191,7 @@ public class SQLInjectionTest extends AbstractPostgreSQLIntegrationTest {
     }
 
     public String getPostCommentReviewUsingStatement(String id) {
-        return doInJPA(entityManager -> {
+        return doInJPA1(entityManager -> {
             Session session = entityManager.unwrap(Session.class);
             return session.doReturningWork(connection -> {
                 String sql =
@@ -208,7 +208,7 @@ public class SQLInjectionTest extends AbstractPostgreSQLIntegrationTest {
     }
 
     public String getPostCommentReviewUsingPreparedStatement(String id) {
-        return doInJPA(entityManager -> {
+        return doInJPA1(entityManager -> {
             Session session = entityManager.unwrap(Session.class);
             return session.doReturningWork(connection -> {
                 String sql =
@@ -225,7 +225,7 @@ public class SQLInjectionTest extends AbstractPostgreSQLIntegrationTest {
     }
 
     public PostComment getPostCommentByReview(String review) {
-        return doInJPA(entityManager -> {
+        return doInJPA1(entityManager -> {
             return entityManager.createQuery(
                 "select p " +
                 "from PostComment p " +
@@ -271,7 +271,7 @@ public class SQLInjectionTest extends AbstractPostgreSQLIntegrationTest {
     }
 
     public List<Post> getPostsByTitle(String title) {
-        return doInJPA(entityManager -> {
+        return doInJPA1(entityManager -> {
             return entityManager.createQuery(
                 "select p " +
                 "from Post p " +
@@ -282,7 +282,7 @@ public class SQLInjectionTest extends AbstractPostgreSQLIntegrationTest {
     }
 
     public List<Tuple> getTuples() {
-        return doInJPA(entityManager -> {
+        return doInJPA1(entityManager -> {
             Class<Post> entityClass = Post.class;
             CriteriaBuilder cb = entityManager.getCriteriaBuilder();
             CriteriaQuery<Tuple> query = cb.createTupleQuery();
@@ -311,7 +311,7 @@ public class SQLInjectionTest extends AbstractPostgreSQLIntegrationTest {
     }*/
 
     public <T> List<T> findAll(String entityName) {
-        return (List<T>) doInJPA(entityManager -> {
+        return (List<T>) doInJPA1(entityManager -> {
             try {
                 return entityManager.unwrap(Session.class).createQuery(
                     "select e " +

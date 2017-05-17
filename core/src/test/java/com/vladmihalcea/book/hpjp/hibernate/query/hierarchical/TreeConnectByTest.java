@@ -23,7 +23,7 @@ public class TreeConnectByTest extends AbstractTreeTest {
     @Test
     public void test() {
 
-        List<PostComment> comments = doInJPA(entityManager -> {
+        List<PostComment> comments = doInJPA1(entityManager -> {
             return (List<PostComment>) entityManager.createNativeQuery(
                     "SELECT * " +
                     "FROM PostComment c " +

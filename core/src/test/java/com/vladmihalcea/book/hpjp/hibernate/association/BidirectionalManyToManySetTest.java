@@ -44,7 +44,7 @@ public class BidirectionalManyToManySetTest extends AbstractTest {
 
     @Test
     public void testRemove() {
-        final Long postId = doInJPA(entityManager -> {
+        final Long postId = doInJPA1(entityManager -> {
             Post post1 = new Post("JPA with Hibernate");
             Post post2 = new Post("Native Hibernate");
 
@@ -70,7 +70,7 @@ public class BidirectionalManyToManySetTest extends AbstractTest {
 
     @Test
     public void testShuffle() {
-        final Long postId = doInJPA(entityManager -> {
+        final Long postId = doInJPA1(entityManager -> {
             Post post1 = new Post("JPA with Hibernate");
             Post post2 = new Post("Native Hibernate");
 

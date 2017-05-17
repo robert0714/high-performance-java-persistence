@@ -23,7 +23,7 @@ public class TreeCTETest extends AbstractTreeTest {
     @Test
     public void test() {
 
-        List<PostComment> comments = doInJPA(entityManager -> {
+        List<PostComment> comments = doInJPA1(entityManager -> {
             return (List<PostComment>) entityManager.createNativeQuery(
                     "WITH RECURSIVE comment_tree(id, parent_id, description, status) AS ( " +
                     "    SELECT c.id, c.parent_id, c.description, status " +

@@ -30,7 +30,7 @@ public class OptimisticLockingOneRootEntityMultipleVersionsTest extends Abstract
 
     @Before
     public void addPost() {
-        originalPost = doInJPA(entityManager -> {
+        originalPost = doInJPA1(entityManager -> {
             Post post = new Post();
             PostViews views = new PostViews();
             views.setPost(post);
@@ -96,7 +96,7 @@ public class OptimisticLockingOneRootEntityMultipleVersionsTest extends Abstract
         }
 
         public void execute() {
-            doInJPA(entityManager -> {
+            doInJPA1(entityManager -> {
                 try {
                     Post post = entityManager.find(Post.class, 1L);
                     barrier.await();
@@ -111,7 +111,7 @@ public class OptimisticLockingOneRootEntityMultipleVersionsTest extends Abstract
 
 
     public Post getPostById(final long postId) {
-        return doInJPA(entityManager -> (Post) entityManager.find(Post.class, postId));
+        return doInJPA1(entityManager -> (Post) entityManager.find(Post.class, postId));
     }
 
     @Test

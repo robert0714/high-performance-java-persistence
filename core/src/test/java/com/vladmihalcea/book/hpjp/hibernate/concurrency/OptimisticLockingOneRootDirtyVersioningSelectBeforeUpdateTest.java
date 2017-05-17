@@ -30,7 +30,7 @@ public class OptimisticLockingOneRootDirtyVersioningSelectBeforeUpdateTest exten
     @Test
     public void testVersionlessOptimisticLockingWhenReattaching() {
 
-        doInJPA(entityManager -> {
+        doInJPA1(entityManager -> {
             Post post = new Post();
             post.setId(1L);
             post.setTitle("JDBC");
@@ -38,7 +38,7 @@ public class OptimisticLockingOneRootDirtyVersioningSelectBeforeUpdateTest exten
             return post;
         });
 
-        Post detachedPost = doInJPA(entityManager -> {
+        Post detachedPost = doInJPA1(entityManager -> {
             LOGGER.info("Alice loads the Post entity");
             return entityManager.find(Post.class, 1L);
         });

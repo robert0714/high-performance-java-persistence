@@ -51,7 +51,7 @@ public class OracleCustomSQLWithStoredProcedureTest extends AbstractOracleXEInte
 	@Test
 	public void test_sql_custom_crud() {
 
-		Person _person = doInJPA(entityManager -> {
+		Person _person = doInJPA1(entityManager -> {
 			Person person = new Person();
 			person.setName( "John Doe" );
 			entityManager.persist( person );

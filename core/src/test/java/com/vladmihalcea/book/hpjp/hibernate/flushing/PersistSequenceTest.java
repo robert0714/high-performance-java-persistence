@@ -36,7 +36,7 @@ public class PersistSequenceTest extends AbstractTest {
     @Test
     public void testMerge() {
 
-        Post post = doInJPA(entityManager -> {
+        Post post = doInJPA1(entityManager -> {
             Post _post = new Post();
             _post.setTitle("High-Performance Java Persistence");
 

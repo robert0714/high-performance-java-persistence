@@ -191,7 +191,7 @@ public class CollectionCacheTest extends AbstractTest {
     @Test
     public void testConsistencyWhenManuallySQLUpdating() {
         LOGGER.info("Manually updating Child entities using SQL");
-        final Repository repository = doInJPA(entityManager -> {
+        final Repository repository = doInJPA1(entityManager -> {
             Repository _repository = (Repository)
                     entityManager.find(Repository.class, 1L);
             for (Commit commit : _repository.getCommits()) {

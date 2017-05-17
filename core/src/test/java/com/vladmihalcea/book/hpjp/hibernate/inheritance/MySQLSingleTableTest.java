@@ -34,7 +34,7 @@ public class MySQLSingleTableTest extends AbstractMySQLIntegrationTest {
 
     @Test
     public void test() {
-        Topic topic = doInJPA(entityManager -> {
+        Topic topic = doInJPA1(entityManager -> {
 
             entityManager.unwrap(Session.class).doWork(connection -> {
                 try(Statement st = connection.createStatement()) {

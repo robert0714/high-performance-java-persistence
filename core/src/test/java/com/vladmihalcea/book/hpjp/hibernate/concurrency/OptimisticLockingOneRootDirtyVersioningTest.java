@@ -122,7 +122,7 @@ public class OptimisticLockingOneRootDirtyVersioningTest extends AbstractTest {
 
     @Test
     public void testVersionlessOptimisticLockingWhenMerging() {
-        Post detachedPost = doInJPA(entityManager -> {
+        Post detachedPost = doInJPA1(entityManager -> {
             Post post = new Post();
             post.setId(1L);
             post.setTitle("JDBC");
@@ -130,7 +130,7 @@ public class OptimisticLockingOneRootDirtyVersioningTest extends AbstractTest {
             return post;
         });
 
-        doInJPA(entityManager -> {
+        doInJPA1(entityManager -> {
             Post post = entityManager.find(Post.class, 1L);
             post.setTitle("Hibernate");
             return post;
@@ -145,7 +145,7 @@ public class OptimisticLockingOneRootDirtyVersioningTest extends AbstractTest {
     @Test
     public void testVersionlessOptimisticLockingWhenReattaching() {
 
-        doInJPA(entityManager -> {
+        doInJPA1(entityManager -> {
             Post post = new Post();
             post.setId(1L);
             post.setTitle("JDBC");
@@ -153,7 +153,7 @@ public class OptimisticLockingOneRootDirtyVersioningTest extends AbstractTest {
             return post;
         });
 
-        Post detachedPost = doInJPA(entityManager -> {
+        Post detachedPost = doInJPA1(entityManager -> {
             LOGGER.info("Alice loads the Post entity");
             return entityManager.find(Post.class, 1L);
         });

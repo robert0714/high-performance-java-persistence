@@ -104,7 +104,7 @@ public class LockModePessimisticReadWriteIntegrationTest extends AbstractPostgre
 
     @Test
     public void testPessimisticWriteAfterFetchWithDetachedForJPA() {
-        Post post = doInJPA(entityManager -> {
+        Post post = doInJPA1(entityManager -> {
             return entityManager.find(Post.class, 1L);
         });
         try {
@@ -118,7 +118,7 @@ public class LockModePessimisticReadWriteIntegrationTest extends AbstractPostgre
 
     @Test
     public void testPessimisticWriteAfterFetchWithDetachedForHibernate() {
-        Post post = doInJPA(entityManager -> {
+        Post post = doInJPA1(entityManager -> {
             return entityManager.find(Post.class, 1L);
         });
         doInJPA(entityManager -> {
@@ -210,7 +210,7 @@ public class LockModePessimisticReadWriteIntegrationTest extends AbstractPostgre
     @Test
     public void testPessimisticNoWait() {
         LOGGER.info("Test PESSIMISTIC_READ blocks PESSIMISTIC_WRITE, NO WAIT fails fast");
-        Post post = doInJPA(entityManager -> {
+        Post post = doInJPA1(entityManager -> {
             return entityManager.find(Post.class, 1L);
         });
 

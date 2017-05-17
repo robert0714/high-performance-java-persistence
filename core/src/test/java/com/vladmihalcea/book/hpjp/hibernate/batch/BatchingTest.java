@@ -140,7 +140,7 @@ public class BatchingTest extends AbstractTest {
     private void insertPosts() {
         doInJPA(entityManager -> {
             for (int i = 0; i < 3; i++) {
-                entityManager.persist(new Post(String.format("Post no. %d", i + 1)));
+                 entityManager.persist(new Post(String.format("Post no. %d", i + 1)));
             }
         });
     }

@@ -38,7 +38,7 @@ public class CriteriaAPIMemberOfTest extends AbstractTest {
 
     @Test
     public void testFind() {
-        doInJPA(entityManager -> {
+        doInJPA1(entityManager -> {
             CriteriaBuilder builder = entityManager.getCriteriaBuilder();
             CriteriaQuery<CalendarEvent> criteria = builder.createQuery(CalendarEvent.class);
             Root<CalendarEvent> root = criteria.from(CalendarEvent.class);

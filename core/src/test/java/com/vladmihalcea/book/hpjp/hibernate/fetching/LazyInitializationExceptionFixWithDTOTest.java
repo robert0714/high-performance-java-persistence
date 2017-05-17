@@ -40,7 +40,7 @@ public class LazyInitializationExceptionFixWithDTOTest extends AbstractPostgreSQ
             }
         });
 
-        List<PostCommentDTO> comments = doInJPA(entityManager -> {
+        List<PostCommentDTO> comments = doInJPA1(entityManager -> {
             return entityManager.createQuery(
                 "select new " +
                 "   com.vladmihalcea.book.hpjp.hibernate.fetching.PostCommentDTO(" +

@@ -47,7 +47,7 @@ public class CascadeLockManyToOneTest extends AbstractTest {
         LOGGER.info("Test lock cascade for detached entity with scope");
 
         //Load the Post entity, which will become detached
-        PostComment comment = doInJPA(entityManager -> (PostComment) entityManager.find(PostComment.class, 1L));
+        PostComment comment = doInJPA1(entityManager -> (PostComment) entityManager.find(PostComment.class, 1L));
 
         doInJPA(entityManager -> {
             LOGGER.info("Reattach and lock entity with associations not initialized");

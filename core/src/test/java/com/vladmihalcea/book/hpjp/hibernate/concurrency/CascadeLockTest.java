@@ -135,7 +135,7 @@ public class CascadeLockTest extends AbstractTest {
         LOGGER.info("Test lock cascade for detached entity without scope");
 
         //Load the Post entity, which will become detached
-        Post post = doInJPA(entityManager ->
+        Post post = doInJPA1(entityManager ->
             (Post) entityManager.createQuery(
                 "select p " +
                 "from Post p " +
@@ -173,7 +173,7 @@ public class CascadeLockTest extends AbstractTest {
         LOGGER.info("Test lock cascade for detached entity with scope");
 
         //Load the Post entity, which will become detached
-        Post post = doInJPA(entityManager -> {
+        Post post = doInJPA1(entityManager -> {
             return entityManager.createQuery(
                 "select p " +
                 "from Post p " +
@@ -207,7 +207,7 @@ public class CascadeLockTest extends AbstractTest {
         LOGGER.info("Test lock cascade for detached entity with scope");
 
         //Load the Post entity, which will become detached
-        Post post = doInJPA(entityManager -> (Post) entityManager.find(Post.class, 1L));
+        Post post = doInJPA1(entityManager -> (Post) entityManager.find(Post.class, 1L));
 
         doInJPA(entityManager -> {
             LOGGER.info("Reattach and lock entity with associations not initialized");
@@ -228,7 +228,7 @@ public class CascadeLockTest extends AbstractTest {
         LOGGER.info("Test lock cascade for detached entity with scope");
 
         //Load the Post entity, which will become detached
-        PostComment postComment = doInJPA(entityManager -> (PostComment) entityManager.find(PostComment.class, 3L));
+        PostComment postComment = doInJPA1(entityManager -> (PostComment) entityManager.find(PostComment.class, 3L));
 
         doInJPA(entityManager -> {
             LOGGER.info("Reattach and lock entity with associations not initialized");
@@ -243,7 +243,7 @@ public class CascadeLockTest extends AbstractTest {
     public void testUpdateOnDetachedEntity() {
         LOGGER.info("Test update for detached entity");
         //Load the Post entity, which will become detached
-        Post post = doInJPA(entityManager -> (Post) entityManager.createQuery(
+        Post post = doInJPA1(entityManager -> (Post) entityManager.createQuery(
             "select p " +
             "from Post p " +
             "join fetch p.details " +

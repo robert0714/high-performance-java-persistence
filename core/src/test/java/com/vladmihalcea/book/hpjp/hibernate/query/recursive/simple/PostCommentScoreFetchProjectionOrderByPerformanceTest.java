@@ -19,7 +19,7 @@ public class PostCommentScoreFetchProjectionOrderByPerformanceTest extends Abstr
 
     @Override
     protected List<PostCommentScore> postCommentScores(Long postId, int rank) {
-        return doInJPA(entityManager -> {
+        return doInJPA1(entityManager -> {
             long startNanos = System.nanoTime();
             List<PostCommentScore> postCommentScores = entityManager.createQuery(
                 "select new " +

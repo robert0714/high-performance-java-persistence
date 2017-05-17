@@ -54,7 +54,7 @@ public class NativeQueryEntityMappingTest extends AbstractPostgreSQLIntegrationT
 
     @Test
     public void test() {
-        final Long postId = doInJPA(entityManager -> {
+        final Long postId = doInJPA1(entityManager -> {
             Post post1 = new Post("JPA with Hibernate");
             Post post2 = new Post("Native Hibernate");
 

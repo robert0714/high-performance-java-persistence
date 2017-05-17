@@ -338,45 +338,45 @@ public abstract class AbstractTest {
         return null;
     }
 
-    protected <T> T doInHibernate(HibernateTransactionFunction<T> callable) {
-        T result = null;
-        Session session = null;
-        Transaction txn = null;
-        try {
-            session = sessionFactory().openSession();
-            callable.beforeTransactionCompletion();
-            txn = session.beginTransaction();
-
-            result = callable.apply(session);
-            if ( !txn.getRollbackOnly() ) {
-                txn.commit();
-            }
-            else {
-                try {
-                    txn.rollback();
-                }
-                catch (Exception e) {
-                    LOGGER.error( "Rollback failure", e );
-                }
-            }
-        } catch (Throwable t) {
-            if ( txn != null && txn.isActive() ) {
-                try {
-                    txn.rollback();
-                }
-                catch (Exception e) {
-                    LOGGER.error( "Rollback failure", e );
-                }
-            }
-            throw t;
-        } finally {
-            callable.afterTransactionCompletion();
-            if (session != null) {
-                session.close();
-            }
-        }
-        return result;
-    }
+//    protected <T> T doInHibernate(HibernateTransactionFunction<T> callable) {
+//        T result = null;
+//        Session session = null;
+//        Transaction txn = null;
+//        try {
+//            session = sessionFactory().openSession();
+//            callable.beforeTransactionCompletion();
+//            txn = session.beginTransaction();
+//
+//            result = callable.apply(session);
+//            if ( !txn.getRollbackOnly() ) {
+//                txn.commit();
+//            }
+//            else {
+//                try {
+//                    txn.rollback();
+//                }
+//                catch (Exception e) {
+//                    LOGGER.error( "Rollback failure", e );
+//                }
+//            }
+//        } catch (Throwable t) {
+//            if ( txn != null && txn.isActive() ) {
+//                try {
+//                    txn.rollback();
+//                }
+//                catch (Exception e) {
+//                    LOGGER.error( "Rollback failure", e );
+//                }
+//            }
+//            throw t;
+//        } finally {
+//            callable.afterTransactionCompletion();
+//            if (session != null) {
+//                session.close();
+//            }
+//        }
+//        return result;
+//    }
 
     protected void doInHibernate(HibernateTransactionConsumer callable) {
         Session session = null;
@@ -416,7 +416,7 @@ public abstract class AbstractTest {
         }
     }
 
-    protected <T> T doInJPA(JPATransactionFunction<T> function) {
+    protected <T> T doInJPA1(JPATransactionFunction<T> function) {
         T result = null;
         EntityManager entityManager = null;
         EntityTransaction txn = null;
@@ -494,44 +494,44 @@ public abstract class AbstractTest {
         }
     }
 
-    protected <T> T doInJDBC(ConnectionCallable<T> callable) {
-        AtomicReference<T> result = new AtomicReference<>();
-        Session session = null;
-        Transaction txn = null;
-        try {
-            session = sessionFactory().openSession();
-            txn = session.beginTransaction();
-            session.doWork(connection -> {
-                result.set(callable.execute(connection));
-            });
-            if ( !txn.getRollbackOnly() ) {
-                txn.commit();
-            }
-            else {
-                try {
-                    txn.rollback();
-                }
-                catch (Exception e) {
-                    LOGGER.error( "Rollback failure", e );
-                }
-            }
-        } catch (Throwable t) {
-            if ( txn != null && txn.isActive() ) {
-                try {
-                    txn.rollback();
-                }
-                catch (Exception e) {
-                    LOGGER.error( "Rollback failure", e );
-                }
-            }
-            throw t;
-        } finally {
-            if (session != null) {
-                session.close();
-            }
-        }
-        return result.get();
-    }
+//    protected <T> T doInJDBC(ConnectionCallable<T> callable) {
+//        AtomicReference<T> result = new AtomicReference<>();
+//        Session session = null;
+//        Transaction txn = null;
+//        try {
+//            session = sessionFactory().openSession();
+//            txn = session.beginTransaction();
+//            session.doWork(connection -> {
+//                result.set(callable.execute(connection));
+//            });
+//            if ( !txn.getRollbackOnly() ) {
+//                txn.commit();
+//            }
+//            else {
+//                try {
+//                    txn.rollback();
+//                }
+//                catch (Exception e) {
+//                    LOGGER.error( "Rollback failure", e );
+//                }
+//            }
+//        } catch (Throwable t) {
+//            if ( txn != null && txn.isActive() ) {
+//                try {
+//                    txn.rollback();
+//                }
+//                catch (Exception e) {
+//                    LOGGER.error( "Rollback failure", e );
+//                }
+//            }
+//            throw t;
+//        } finally {
+//            if (session != null) {
+//                session.close();
+//            }
+//        }
+//        return result.get();
+//    }
 
     protected void doInJDBC(ConnectionVoidCallable callable) {
         Session session = null;

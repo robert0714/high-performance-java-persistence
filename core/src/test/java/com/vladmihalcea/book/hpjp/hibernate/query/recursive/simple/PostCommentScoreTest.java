@@ -136,7 +136,7 @@ public class PostCommentScoreTest extends AbstractPostgreSQLIntegrationTest {
     }
 
     protected List<PostCommentScore> postCommentScoresCTEJoin(Long postId, int rank) {
-        return doInJPA(entityManager -> {
+        return doInJPA1(entityManager -> {
             List<PostCommentScore> postCommentScores = entityManager.createNativeQuery(
                 "SELECT id, parent_id, review, created_on, score " +
                 "FROM ( " +
@@ -178,7 +178,7 @@ public class PostCommentScoreTest extends AbstractPostgreSQLIntegrationTest {
     }
 
     protected List<PostCommentScore> postCommentScoresInMemory(Long postId, int rank) {
-        return doInJPA(entityManager -> {
+        return doInJPA1(entityManager -> {
             List<PostCommentScore> postCommentScores = entityManager.createQuery(
                 "select new " +
                 "   com.vladmihalcea.book.hpjp.hibernate.query.recursive.PostCommentScore(" +

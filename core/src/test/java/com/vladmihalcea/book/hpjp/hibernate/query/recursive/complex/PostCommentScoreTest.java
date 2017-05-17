@@ -198,7 +198,7 @@ public class PostCommentScoreTest extends AbstractPostgreSQLIntegrationTest {
     }
 
     private List<PostCommentScore> postCommentScoresCTEJoin(Long postId, int rank) {
-        return doInJPA(entityManager -> {
+        return doInJPA1(entityManager -> {
             List<PostCommentScore> postCommentScores = entityManager.createNativeQuery(
                 "SELECT id, parent_id, root_id, review, created_on, score " +
                 "FROM ( " +
@@ -243,7 +243,7 @@ public class PostCommentScoreTest extends AbstractPostgreSQLIntegrationTest {
     }
 
     private List<PostCommentScore> postCommentScoresCTESelect(Long postId, int rank) {
-        return doInJPA(entityManager -> {
+        return doInJPA1(entityManager -> {
             List<PostCommentScore> postCommentScores = entityManager.createNativeQuery(
                 "SELECT id, parent_id, root_id, review, created_on, score " +
                 "FROM ( " +
@@ -284,7 +284,7 @@ public class PostCommentScoreTest extends AbstractPostgreSQLIntegrationTest {
     }
 
     protected List<PostCommentScore> postCommentScoresInMemory(Long postId, int rank) {
-        return doInJPA(entityManager -> {
+        return doInJPA1(entityManager -> {
             List<PostCommentScore> postCommentScores = entityManager.createQuery(
                 "select new com.vladmihalcea.book.hpjp.hibernate.query.recursive.PostCommentScore(" +
                 "   pc.id, pc.parent.id, 0, pc.review, pc.createdOn, sum( case when pcv.up is null then 0 when pcv.up = true then 1 else -1 end ) " +

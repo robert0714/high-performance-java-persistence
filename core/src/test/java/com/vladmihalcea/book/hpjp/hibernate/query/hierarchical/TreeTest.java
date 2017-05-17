@@ -18,7 +18,7 @@ public class TreeTest extends AbstractTreeTest {
     @Test
     public void test() {
 
-        List<PostComment> comments = doInJPA(entityManager -> {
+        List<PostComment> comments = doInJPA1(entityManager -> {
             return (List<PostComment>) entityManager
                 .unwrap(Session.class)
                 .createQuery(
@@ -34,7 +34,7 @@ public class TreeTest extends AbstractTreeTest {
 
     @Test
     public void testRecursion() {
-        PostComment comment = doInJPA(entityManager -> {
+        PostComment comment = doInJPA1(entityManager -> {
             PostComment root = entityManager.createQuery("select n from Comment n where n.parent is null", PostComment.class).getSingleResult();
             fetchChildren(root);
             return root;

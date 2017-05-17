@@ -28,7 +28,7 @@ public class TablePerClassTest extends AbstractTest {
 
     @Test
     public void test() {
-        Topic topic = doInJPA(entityManager -> {
+        Topic topic = doInJPA1(entityManager -> {
             Board board = new Board();
             board.setName("Hibernate");
 

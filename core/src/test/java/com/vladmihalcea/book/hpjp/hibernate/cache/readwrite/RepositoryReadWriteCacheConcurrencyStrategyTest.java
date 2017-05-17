@@ -45,7 +45,7 @@ public class RepositoryReadWriteCacheConcurrencyStrategyTest extends AbstractTes
     @Before
     public void init() {
         super.init();
-        repositoryReference = doInJPA(entityManager -> {
+        repositoryReference = doInJPA1(entityManager -> {
             LOGGER.info("Read-write entities are write-through on persisting");
             Repository repository = new Repository("Hibernate-Master-Class");
             Commit commit = new Commit(repository);
