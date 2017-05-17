@@ -18,22 +18,22 @@
 
     <modules>
         <module>core</module>
-        <!--<module>jooq</module>-->
+        <module>jooq</module>
     </modules>
 
-    <repositories>
-        <repository>
-            <id>maven.oracle.com</id>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <url>https://maven.oracle.com</url>
-            <layout>default</layout>
-        </repository>
-    </repositories>
+<!--     <repositories> -->
+<!--         <repository> -->
+<!--             <id>maven.oracle.com</id> -->
+<!--             <releases> -->
+<!--                 <enabled>true</enabled> -->
+<!--             </releases> -->
+<!--             <snapshots> -->
+<!--                 <enabled>false</enabled> -->
+<!--             </snapshots> -->
+<!--             <url>https://maven.oracle.com</url> -->
+<!--             <layout>default</layout> -->
+<!--         </repository> -->
+<!--     </repositories> -->
 
     <dependencies>
 
