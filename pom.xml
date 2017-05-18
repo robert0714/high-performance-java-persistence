@@ -367,9 +367,9 @@
                 <version>1.0.0</version>
                 <executions>
                     <execution>
-                        <goals>
+                      <!--  <goals>
                             <goal>set-system-properties</goal>
-                        </goals>
+                        </goals>-->
                         <configuration>
                             <properties>
                                 <!--<property>

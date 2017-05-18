@@ -80,7 +80,7 @@ public class MySQLDataSourceProvider implements DataSourceProvider {
 	@Override
 	public DataSource dataSource() {
 		MysqlDataSource dataSource = new MysqlDataSource();
-		dataSource.setURL( "jdbc:mysql://localhost/high_performance_java_persistence?" +
+		dataSource.setURL( "jdbc:mysql://192.168.57.79/ude?" +
 								   "rewriteBatchedStatements=" + rewriteBatchedStatements +
 								   "&cachePrepStmts=" + cachePrepStmts +
 								   "&useServerPrepStmts=" + useServerPrepStmts +
@@ -89,8 +89,8 @@ public class MySQLDataSourceProvider implements DataSourceProvider {
 								   "&useLegacyDatetimeCode=" + useLegacyDatetimeCode
 
 		);
-		dataSource.setUser( "mysql" );
-		dataSource.setPassword( "admin" );
+		dataSource.setUser( "ude" );
+		dataSource.setPassword( "ude" );
 		return dataSource;
 	}
 
@@ -108,7 +108,7 @@ public class MySQLDataSourceProvider implements DataSourceProvider {
 
 	@Override
 	public String url() {
-		return "jdbc:mysql://localhost/high_performance_java_persistence?user=mysql&password=admin";
+		return "jdbc:mysql://192.168.57.79/ude?user=ude&password=ude";
 	}
 
 	@Override
