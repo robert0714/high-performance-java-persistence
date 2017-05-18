@@ -20,10 +20,10 @@ public class OracleDataSourceProvider implements DataSourceProvider {
 	public DataSource dataSource() {
 		try {
 			DataSource dataSource = ReflectionUtils.newInstance( "oracle.jdbc.pool.OracleDataSource" );
-			ReflectionUtils.invokeSetter( dataSource, "databaseName", "high_performance_java_persistence" );
+			ReflectionUtils.invokeSetter( dataSource, "databaseName", "xe" );
 			ReflectionUtils.invokeSetter( dataSource, "URL", url() );
-			ReflectionUtils.invokeSetter( dataSource, "user", "oracle" );
-			ReflectionUtils.invokeSetter( dataSource, "password", "admin" );
+			ReflectionUtils.invokeSetter( dataSource, "user", username()  );
+			ReflectionUtils.invokeSetter( dataSource, "password",  password()  );
 			return dataSource;
 		}
 		catch (Exception e) {
@@ -44,7 +44,7 @@ public class OracleDataSourceProvider implements DataSourceProvider {
 	@Override
 	public Properties dataSourceProperties() {
 		Properties properties = new Properties();
-		properties.setProperty( "databaseName", "high_performance_java_persistence" );
+		properties.setProperty( "databaseName", "xe" );
 		properties.setProperty( "URL", url() );
 		properties.setProperty( "user", username() );
 		properties.setProperty( "password", password() );
