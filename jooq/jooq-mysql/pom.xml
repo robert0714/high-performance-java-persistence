@@ -26,7 +26,11 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+	<properties>
+		<dbUrl>jdbc:mysql://192.168.57.79:3306/ude</dbUrl>
+		<dbUsername>ude</dbUsername>
+		<dbPassword>ude</dbPassword>
+	</properties>
     <build>
         <plugins>
             <plugin>
@@ -42,9 +46,9 @@
                 </dependencies>
                 <configuration>
                     <driver>com.mysql.jdbc.Driver</driver>
-                    <url>jdbc:mysql://localhost/high_performance_java_persistence</url>
-                    <username>mysql</username>
-                    <password>admin</password>
+                    <url>${dbUrl}</url>
+                    <username>${dbUsername}</username>
+                    <password>${dbPassword}</password>
                     <autocommit>true</autocommit>
                     <settingsKey>mysql-db-test</settingsKey>
                 </configuration>
@@ -93,9 +97,9 @@
                 <configuration>
                     <jdbc>
                         <driver>com.mysql.jdbc.Driver</driver>
-                        <url>jdbc:mysql://localhost/high_performance_java_persistence</url>
-                        <username>mysql</username>
-                        <password>admin</password>
+                        <url>${dbUrl}</url>
+                    	<username>${dbUsername}</username>
+                   		<password>${dbPassword}</password>
                     </jdbc>
                     <generator>
                         <name>org.jooq.util.JavaGenerator</name>
@@ -103,7 +107,7 @@
                             <name>org.jooq.util.mysql.MySQLDatabase</name>
                             <includes>.*</includes>
                             <excludes></excludes>
-                            <inputSchema>high_performance_java_persistence</inputSchema>
+                            <inputSchema>ude</inputSchema>
                         </database>
                         <generate></generate>
                         <target>

@@ -153,7 +153,7 @@ public class PostCommentScoreTest extends AbstractJOOQPostgreSQLIntegrationTest 
     }
 
     protected List<PostCommentScore> postCommentScoresCTEJoin(Long postId, int rank) {
-        return doInJPA(entityManager -> {
+        return doInJPA1(entityManager -> {
             List<PostCommentScore> postCommentScores = entityManager.createNativeQuery(
                 "SELECT id, parent_id, review, created_on, score " +
                     "FROM ( " +

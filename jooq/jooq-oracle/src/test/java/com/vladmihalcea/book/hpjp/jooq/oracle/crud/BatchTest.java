@@ -22,7 +22,7 @@ public class BatchTest extends AbstractJOOQOracleSQLIntegrationTest {
 
     @Test
     public void testBatching() {
-        doInJOOQ(sql -> {
+        doInJOOQ1(sql -> {
             sql.delete(POST).execute();
             BatchBindStep batch = sql.batch(sql
                 .insertInto(POST, POST.ID, POST.TITLE)

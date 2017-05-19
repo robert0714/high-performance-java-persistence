@@ -26,7 +26,7 @@ public class KeysetPaginationTest extends AbstractJOOQPostgreSQLIntegrationTest 
     public void testPagination() {
         String user = "Vlad Mihalcea";
 
-        doInJOOQ(sql -> {
+        doInJOOQ1(sql -> {
             sql
             .deleteFrom(POST_DETAILS)
             .execute();
@@ -50,7 +50,7 @@ public class KeysetPaginationTest extends AbstractJOOQPostgreSQLIntegrationTest 
             }
         });
 
-        doInJOOQ(sql -> {
+        doInJOOQ1(sql -> {
 
             int pageSize = 5;
 
@@ -63,7 +63,7 @@ public class KeysetPaginationTest extends AbstractJOOQPostgreSQLIntegrationTest 
             assertEquals(5, results.size());
         });
 
-        doInJOOQ(sql -> {
+        doInJOOQ1(sql -> {
 
             int pageSize = 5;
 

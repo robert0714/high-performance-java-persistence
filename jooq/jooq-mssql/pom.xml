@@ -13,6 +13,7 @@
 
     <dependencies>
         <dependency>
+      <!-- sqlserver only use commercial jOOQ Edition -->  
             <groupId>org.jooq.pro</groupId>
             <artifactId>jooq</artifactId>
             <version>${jooq.version}</version>
@@ -26,7 +27,11 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+	<properties>	           
+		<dbUrl>jdbc:sqlserver://192.168.57.79:1433;instance=SQLEXPRESS;databaseName=high_performance_java_persistence</dbUrl>
+		<dbUsername>sa</dbUsername>
+		<dbPassword>Ude123@iisi</dbPassword>
+	</properties>
     <build>
         <plugins>
             <plugin>
@@ -42,9 +47,9 @@
                 </dependencies>
                 <configuration>
                     <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
-                    <url>jdbc:sqlserver://localhost;instance=SQLEXPRESS;databaseName=high_performance_java_persistence</url>
-                    <username>sa</username>
-                    <password>adm1n</password>
+                    <url>${dbUrl}</url>
+                    <username>${dbUsername}</username>
+                    <password>${dbPassword}</password>
                     <autocommit>true</autocommit>
                     <onError>continue</onError>
                     <settingsKey>oracle-db-test</settingsKey>
@@ -72,7 +77,7 @@
             </plugin>
 
             <plugin>
-                <groupId>org.jooq.pro</groupId>
+                <groupId>org.jooq</groupId>
                 <artifactId>jooq-codegen-maven</artifactId>
                 <version>${jooq.version}</version>
                 <executions>
@@ -94,9 +99,9 @@
                 <configuration>
                     <jdbc>
                         <driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</driver>
-                        <url>jdbc:sqlserver://localhost;instance=SQLEXPRESS;databaseName=high_performance_java_persistence</url>
-                        <username>sa</username>
-                        <password>adm1n</password>
+                        <url>${dbUrl}</url>
+                    	<username>${dbUsername}</username>
+                    	<password>${dbPassword}</password>
                     </jdbc>
                     <generator>
                         <name>org.jooq.util.JavaGenerator</name>

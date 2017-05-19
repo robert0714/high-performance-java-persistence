@@ -27,7 +27,7 @@ public class KeysetPaginationFailTest extends AbstractJOOQOracleSQLIntegrationTe
     public void testPagination() {
         String user = "Vlad Mihalcea";
 
-        doInJOOQ(sql -> {
+        doInJOOQ1(sql -> {
             sql
             .deleteFrom(POST_DETAILS)
             .execute();
@@ -51,7 +51,7 @@ public class KeysetPaginationFailTest extends AbstractJOOQOracleSQLIntegrationTe
             }
         });
 
-        doInJOOQ(sql -> {
+        doInJOOQ1(sql -> {
 
             int pageSize = 5;
 
@@ -64,7 +64,7 @@ public class KeysetPaginationFailTest extends AbstractJOOQOracleSQLIntegrationTe
             assertEquals(5, results.size());
         });
 
-        doInJOOQ(sql -> {
+        doInJOOQ1(sql -> {
 
             int pageSize = 5;
 

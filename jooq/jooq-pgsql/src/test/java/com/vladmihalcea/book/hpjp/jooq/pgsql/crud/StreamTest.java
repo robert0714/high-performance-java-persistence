@@ -25,7 +25,7 @@ public class StreamTest extends AbstractJOOQPostgreSQLIntegrationTest {
     public void init() {
         super.init();
 
-        doInJOOQ(sql -> {
+        doInJOOQ1(sql -> {
             sql
             .deleteFrom(POST)
             .execute();
@@ -54,7 +54,7 @@ public class StreamTest extends AbstractJOOQPostgreSQLIntegrationTest {
 
     @Test
     public void testStream() {
-        doInJOOQ(sql -> {
+        doInJOOQ1(sql -> {
 
             Long lastProcessedId = 1L;
 

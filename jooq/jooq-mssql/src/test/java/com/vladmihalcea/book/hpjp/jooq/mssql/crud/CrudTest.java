@@ -18,7 +18,7 @@ public class CrudTest extends AbstractJOOQSQLServerSQLIntegrationTest {
 
     @Test
     public void testCrud() {
-        doInJOOQ(sql -> {
+        doInJOOQ1(sql -> {
             sql
             .deleteFrom(table("post"))
             .execute();

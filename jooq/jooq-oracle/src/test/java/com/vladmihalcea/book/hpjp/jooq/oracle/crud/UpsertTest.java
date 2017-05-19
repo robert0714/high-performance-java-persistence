@@ -24,7 +24,7 @@ public class UpsertTest extends AbstractJOOQOracleSQLIntegrationTest {
 
     @Test
     public void testUpsert() {
-        doInJOOQ(sql -> {
+        doInJOOQ1(sql -> {
             sql.delete(POST_DETAILS).execute();
             sql.delete(POST).execute();
             sql

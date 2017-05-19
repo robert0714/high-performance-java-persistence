@@ -13,19 +13,25 @@
 	<artifactId>high-performance-java-persistence-core</artifactId>
 
 	<dependencies>
-		<dependency>
-			<groupId>com.github.noraui</groupId>
-			<artifactId>ojdbc7</artifactId>
-			<version>12.1.0.2</version>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>com.github.noraui</groupId> -->
+<!-- 			<artifactId>ojdbc7</artifactId> -->
+<!-- 			<version>12.1.0.2</version> -->
+<!-- 		</dependency> -->
 	</dependencies>
 
 	<build>
 		<plugins>
+<!-- 		 creating a jar containing test classes -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.4</version>
+				<version>3.0.2</version>
+<!-- 				<configuration> -->
+<!-- 		          <archive> -->
+<!-- 		            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile> -->
+<!-- 		          </archive> -->
+<!-- 		        </configuration> -->
 				<executions>
 					<execution>
 						<goals>
@@ -96,6 +102,7 @@
 						<configuration>
 							<sources>
 								<source>target/generated-sources/java</source>
+<!-- 								<source>target/test-classes</source> -->
 							</sources>
 						</configuration>
 					</execution>

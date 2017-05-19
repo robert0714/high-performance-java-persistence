@@ -19,7 +19,7 @@ public class CrudTest extends AbstractJOOQPostgreSQLIntegrationTest {
 
     @Test
     public void testCrud() {
-        doInJOOQ(sql -> {
+        doInJOOQ1(sql -> {
             sql
             .deleteFrom(table("post"))
             .execute();
@@ -51,7 +51,7 @@ public class CrudTest extends AbstractJOOQPostgreSQLIntegrationTest {
 
     @Test
     public void testCrudJavaSchema() {
-        doInJOOQ(sql -> {
+        doInJOOQ1(sql -> {
             sql
             .deleteFrom(POST)
             .execute();
